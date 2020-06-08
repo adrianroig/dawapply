@@ -1,5 +1,7 @@
 {
   "name": "dawapply",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

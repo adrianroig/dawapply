@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Add offer</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button [text]='Back' defaultHref="offers"> </ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-item>
+    <ion-label position="stacked"> Name of offer </ion-label>
+    <ion-input [(ngModel)]="name" type="text"></ion-input>
+  </ion-item>
+  <p class="error"> The name is empty </p>
+
+<!--   <ion-item>
+    <ion-label position="stacked"> Image </ion-label>
+    <ion-input [(ngModel)]="image" type="text"></ion-input>
+  </ion-item>
+
+  <p class="error"> The image is empy </p> -->
+
+  <ion-item>
+    <ion-label position="stacked"> Province </ion-label>
+    <ion-input [(ngModel)]="province" type="text"></ion-input>
+  </ion-item>
+
+  <p class="error"> The province is empy </p>
+
+  <ion-item>
+    <ion-label position="stacked"> Description </ion-label>
+    <ion-input [(ngModel)]="description" type="text"></ion-input>
+  </ion-item>
+
+  <p class="error"> The description is empy </p>
+
+  <ion-item>
+    <ion-label position="stacked"> Salary </ion-label>
+    <ion-input [(ngModel)]="salary" type="number"></ion-input>
+  </ion-item>
+
+  <p class="error"> The salary is empy </p>
+
+<ion-button (click)='add_offer()' expand='block'> Add offer </ion-button>
+
+</ion-content>

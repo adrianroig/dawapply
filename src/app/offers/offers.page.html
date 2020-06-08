@@ -1,0 +1,73 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button [text]='Logout' defaultHref="home"> </ion-back-button>
+    </ion-buttons>
+      <ion-title class="title">
+        OFFERS
+      </ion-title>
+      <ion-icon slot="end" class="search" name="search" (click)=filtros()></ion-icon>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="verFiltros">
+    <ion-searchbar (ionChange)="buscarOferta($event)"></ion-searchbar>
+    <ion-item>
+      <ion-label>Province</ion-label>
+      <ion-select placeholder="Select One" [(ngModel)]="mySelect" (ionChange)="onChange($event)">
+        <ion-select-option value="all">All</ion-select-option>
+        <ion-select-option value="madrid">Madrid</ion-select-option>
+        <ion-select-option value="valencia">Valencia</ion-select-option>
+        <ion-select-option value="barcelona">Barcelona</ion-select-option>
+        <ion-select-option value="Sevilla">Sevilla</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </div>
+  <div *ngIf="isAdmin">
+    <ion-list>
+      <ion-item-sliding #slidingItem *ngFor="let offer of offers">
+        <ion-item-options side="end">
+          <ion-item-option color="danger" (click)=eliminar(offer.id)>
+            <ion-icon slot="top" name="trash"></ion-icon>
+              Delete
+          </ion-item-option>
+          
+          <ion-item-option color="primary" (click)=edit(offer)>
+            <ion-icon slot="top" name="create"></ion-icon>
+              Edit
+          </ion-item-option>
+
+        </ion-item-options>
+
+        <ion-item class="oferta" (click)="offer_details(offer)">
+          <ion-avatar slot="start">
+            <ion-img src="../assets/img/{{offer.image}}"></ion-img>
+          </ion-avatar>
+          <ion-label>
+              <h2 > {{offer.name}} </h2>
+          </ion-label>
+        </ion-item>
+      </ion-item-sliding>
+      </ion-list>
+
+    <ion-fab (click)="press_button_add()" vertical="bottom" horizontal="end" slot="fixed">
+      <ion-fab-button>
+        <ion-icon name="add"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+  </div>
+
+  <div *ngIf="isAdmin==false">
+    <ion-list *ngFor="let offer of offers">
+        <ion-item class="oferta" (click)="offer_details(offer)">
+          <ion-avatar slot="start">
+            <ion-img src="../assets/img/{{offer.image}}"></ion-img>
+          </ion-avatar>
+          <ion-label>
+              <h2 > {{offer.name}} </h2>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+  </div>
+</ion-content>
